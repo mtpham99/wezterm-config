@@ -1,6 +1,9 @@
 -- Wezterm API
 local wezterm = require('wezterm')
 
+-- Util Functions
+local utils = require('utils')
+
 -- Config Table
 local config = {}
 
@@ -21,8 +24,9 @@ config.cursor_blink_ease_out = 'Constant'
 config.animation_fps = 1
 
 -- Font
-config.font = wezterm.font('JetBrains Mono', { weight = 'Medium', italic = false })
-config.font_size = 13
+-- config.font = wezterm.font('JetBrains Mono', { weight = 'Medium', italic = false })
+config.font = wezterm.font('Iosevka', { weight = 'Medium', italic = false })
+config.font_size = 14
 
 -- Colorscheme
 config.color_scheme = 'Breeze (Gogh)'
@@ -44,11 +48,14 @@ config.window_padding = {
 -- Tabs Bar
 config.use_fancy_tab_bar = false
 
--- Password Input
+-- Password Input Lock Icon
 config.detect_password_input = false
 
 -- Scrollback
 config.scrollback_lines = 1000000
+
+-- Multiplexing ( keybinds )
+config = utils.merge_tables(config, require('multiplex'))
 
 -- Finish
 return config
